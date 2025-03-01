@@ -17,7 +17,11 @@ class TickerNews(BaseTool):
 
     def _run(self, ticker: str):
         # Tool implementation
+        print(f"TOOL CALL: Getting news for {ticker}")
+        
         response = requests.get(f"https://api.polygon.io/vX/reference/tickers/{ticker}/events?apiKey={self.api_key}")
+
+        print(f"TOOL RESPONSE: {response.content}")
 
         return response.content
 
