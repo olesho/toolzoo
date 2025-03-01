@@ -1,0 +1,5 @@
+In "get_v3_reference_dividends.html" you are given a documentation: a cleaned HTML description of an API call.
+This documentation contains description of a specific API call using HTTP protocol. 
+It includes HTTP method, URL, description, and parameters.
+Use this description to generate a Python code for Langchain LLM Tool Call.
+An example of already created Langchain tool is provided in "news.py".
