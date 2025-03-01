@@ -1,0 +1,40 @@
+ticker price
+ticker news
+exchanges
+
+USE CASES:
+1. Provide last news about Apple.
+    input: ticker, currentdate(), transform last news to timeframe
+    output: news text
+2. What's the price of Meta?
+    input: ticker, currentdate()
+    output: price number
+3. What was the price of Meta 4 days ago?
+    input: ticker, currentdate(), currentdate() - 4 days
+    output: price number
+4. Where can I exchange stock [stock/options/crypto]? (/v3/reference/exchanges)
+    input: asset class
+    output: list of exchanges
+5. Which stock is more expensive - Apple or Meta?
+    input: tickers, currentdate()
+    output: text with [aapl > meta]?
+
+6. Can you show me the historical performance of Tesla stock over the past month?
+    input: ticker, currentdate() past month
+    output: chart?
+7. How did the S&P 500 perform today?
+    input: ticker, currentdate()
+    output: chart?
+8. What is the current P/E ratio of Microsoft?
+    input: ticker, currentdate()
+    output: calculated P/E (we can use info provided by api to calculate ratio)
+9. What is the dividend yield for Johnson & Johnson?
+    input: ticker, currentdate()
+    output: validate if ticker is dividend, if yes - provide info
+10. What’s the 52-week high/low for Netflix?
+    input: ticker, currentdate() 52-week
+    output: chart?
+
+11. Can you provide the earnings report schedule for Apple this quarter?
+    input: ticker, currentdate()
+    output: schedule (think where we can get actual schedule)
