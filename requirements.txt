@@ -21,6 +21,7 @@ langchain-core==0.3.40
 langchain-text-splitters==0.3.6
 langchain-ollama==0.2.3
 langchain-anthropic==0.3.8
+langgraph==0.3.2
 ollama==0.4.7
 langsmith==0.3.11
 marshmallow==3.26.1
@@ -45,3 +46,4 @@ typing_extensions==4.12.2
 urllib3==2.3.0
 yarl==1.18.3
 zstandard==0.23.0
+ipython==9.0.0
