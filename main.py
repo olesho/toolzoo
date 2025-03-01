@@ -40,13 +40,15 @@ if CACHE:
 
 ticker_news = TickerNews(api_key=polygon_api_key)
 multiply = Multiply()
-current_time_in = CurrentTimeTool()
+current_time = CurrentTimeTool()
 
 llm = ChatOllama(model='llama3.2', temperature=0)
-llm_with_tools = llm.bind_tools([multiply, current_time_in, ticker_news])
+llm_with_tools = llm.bind_tools([multiply, current_time, ticker_news])
 
-query = "What is 2 multiplied by 3? Also could you help me to calculate multiplication for 34 by 12"
-# query = "What is current time in Cordoba?" 
+# query = "What is 2 multiplied by 3? Also could you help me to calculate multiplication for 34 by 12"
+query = "What is a current date and time?"
+
+# query = "What is current time in Cordoba?"
 # query = "Can you help me to get news for AMZN ticker ?"
 messages = [HumanMessage(query)]
 
@@ -57,12 +59,16 @@ ai_msg = llm_with_tools.invoke(messages)
 messages.append(ai_msg)
 
 for tool_call in ai_msg.tool_calls:
-    selected_tool = { 
-        "multiply": multiply, 
-        "current_time_in": current_time_in, 
+    selected_tool = {
+        "multiply": multiply,
+        "current_time": current_time,
         "ticker_news": ticker_news }[tool_call['name'].lower()]
     tool_msg = selected_tool.invoke(tool_call)
     messages.append(tool_msg)
+
+print(f"Tool: {tool_msg.name}")
+
+# print(f"Args: {tool_msg.args}")
 
 result_msg = llm_with_tools.invoke(messages)
 
