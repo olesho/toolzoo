@@ -1,0 +1,8 @@
+Below I'll provide a cleaned HTML description documentation of an API call and an example of Langchain tool.
+This documentation contains description of a specific API call using HTTP protocol. 
+It includes HTTP method, URL, description, and parameters.
+Use this description to generate a Python code for Langchain LLM Tool Call. Return only Python code without any comments and text from you. Also don't wrap it in "python``````" formatting. I want to copy message you'll return, paste it to empty .py file and run as is.
+HTML documentation:
+"[api_ref.html]"
+An example of already created Langchain tool is:
+"[tool_example.py]"
