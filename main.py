@@ -63,31 +63,6 @@ If field is not present, you need to return False.
 Otherwise return True.
 """
 
-# check_field_presence_prompt = """
-# You are a helpful assistant that can help me to check if the field is present in the user query. 
-# You will be given a user query and a field name and description.
-# You need to check if the field whith specified type is present in the user query.
-
-# If fields type doesn't match, you need to return False.
-# If field is not present, you need to return False.
-# Otherwise return True.
-
-# Here is the user query:
-# {user_query}
-
-# Here is the field name:
-# {field_name}
-
-# Here is the field type:
-# {field_type}
-
-# Here is the field value:
-# {field_value}
-
-# Here is the field description:
-# {field_description}
-# """
-
 class CheckFieldPresence(BaseModel):
     presence: bool = Field(None, description="Defines if the field is present in the file.")
 
@@ -115,8 +90,7 @@ def validate_tool_inputs(state: State):
                 field_type=available_tools[new_tool_call['name']].args[key]['type'],
                 field_description=available_tools[new_tool_call['name']].args[key]['description']
             )
-            # print("Validating tool call", q)
-            # print("--------------------------------")
+
             field_presence_result = field_presence_llm.invoke(q)
             
             # TODO: add validation result to the tool call
@@ -138,8 +112,6 @@ def execute_tool_call(state: State):
             "multiply": multiply, 
             "current_time_in": current_time_in, 
             "ticker_news": ticker_news }[tool_call['name'].lower()]
-        
-        # print("EXPECTED TOOL CALL",  state['tool_calls'])
 
         tool_msg = selected_tool.invoke(tool_call)
         messages.append(tool_msg)
