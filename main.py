@@ -5,6 +5,7 @@ from langchain_core.messages import HumanMessage
 from langchain.globals import set_llm_cache
 # from langchain_community.cache import SQLiteCache
 from langchain_community.cache import InMemoryCache
+from dotenv import load_dotenv
 
 import argparse
 import langchain
@@ -14,7 +15,10 @@ from tools.polygon.news import TickerNews
 from tools.math.multiply import Multiply
 from tools.time.current import CurrentTimeTool
 
-polygon_api_key = os.getenv("POLYGON_API_KEY") or "cfm1wL__WBWD_udyjSiglepgZvHPt14w"
+# Load environment variables from .env file
+load_dotenv()
+
+polygon_api_key = os.getenv("POLYGON_API_KEY")
 
 parser = argparse.ArgumentParser(description='LangChain script with debug and cache options')
 parser.add_argument('-d', '--debug', action='store_true', help='Enable debug mode')

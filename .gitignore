@@ -50,3 +50,6 @@ build/
 
 # Python virtualenv
 .venv/
+
+# Environment variables
+.env
